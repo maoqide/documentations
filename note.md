@@ -12,3 +12,16 @@ iptables -t nat -A PREROUTING -p $pro --dport $NAT_Port -j DNAT --to-destination
 iptables -t nat -A POSTROUTING -p $pro --dport $Dst_Port -d $Dst_Host -j SNAT --to $NAT_Host
 #echo 1 > /proc/sys/net/ipv4/ip_forward
 ```
+## raspberry pi simple gpio example using shell
+```shell
+#!/bin/bash
+
+echo "5" > /sys/class/gpio/export
+echo "out" > /sys/class/gpio/gpio5/direction
+echo "1" > /sys/class/gpio/gpio5/value
+
+sleep 1
+
+echo "5" > /sys/class/gpio/unexport
+
+```
