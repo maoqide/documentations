@@ -1,5 +1,14 @@
 # record my common notes
 
+## some useful docker commands
+```shell
+#list images with format like 'repository:tag'
+docker images --format '{{.Repository}}:{{.Tag}}'
+#search images of a certain registry
+docker images --format '{{.Repository}}:{{.Tag}}' | grep registryName | sed 's#/# #g' | awk '{print $2}'
+
+```
+
 ## ip forward
 ```shell
 #!/bin/bash
