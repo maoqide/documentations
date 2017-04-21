@@ -40,9 +40,15 @@ echo "5" > /sys/class/gpio/unexport
 - hypriot: https://hub.docker.com/u/hypriot/
 
 
+-----------------------------------------------------------
 # 记录一些异常状况的解决。
 ## virtualbox 恢复到最近状态。
 情况：virtualbox中虚拟机出错，重启后恢复到上次的snapshot状态（snapshot很久之前）。    
 
-解决：关机。查找`VirtualBox VMs\<vmname>\Snapshots]`目录下的.vdi文件，如果有出错之前最新的，在virtualbox界面，点击设置->存储，将当前的.vdi移除，再点击添加虚拟硬盘，选中最新的.vdi文件，添加，没问题的话话启动虚拟机，应该就可以恢复到出错之前的状态，前提是可以找到出错前的.vdi文件。
+解决：关机。查找`VirtualBox VMs\<vmname>\Snapshots]`目录下的.vdi文件，如果有出错之前最新的，在virtualbox界面，点击设置->存储，将当前的.vdi移除，再点击添加虚拟硬盘，选中最新的.vdi文件，添加，没问题的话话启动虚拟机，应该就可以恢复到出错之前的状态，前提是可以找到出错前的.vdi文件。    
+
+![](raw/vbox1.png)
+![](raw/vbox2.png)
+![](raw/vbox3.png)
+
 
