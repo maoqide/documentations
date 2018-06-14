@@ -365,7 +365,7 @@ ingress, haproxy rules
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: dashboard-kibana-ingress
+  name: test-ingress
   annotations:
     kubernetes.io/ingress.class: "ha-test"    # ingress-class, ingress-controller only fetch ingress with the same ingress-class
     ingress.kubernetes.io/ssl-redirect: "false"  # ssl-redirect must be false where not use ip instead of domainname in host
@@ -381,4 +381,34 @@ spec:
           backend:
             serviceName: test2-svc
             servicePort: 30092
+```
+
+# finally    
+```
+[root@csv-dcosnew44 ~]# kubectl get all
+NAME                     DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+deploy/haproxy-ingress   1         1         1            1           23h
+deploy/test              1         1         1            1           23h
+deploy/test2             1         1         1            1           21h
+
+NAME                            DESIRED   CURRENT   READY     AGE
+rs/haproxy-ingress-58d887d7c9   1         1         1         3h
+rs/test-588dcc677c              1         1         1         23h
+rs/test2-64d7488f47             1         1         1         21h
+
+NAME                                  READY     STATUS        RESTARTS   AGE
+po/haproxy-ingress-58d887d7c9-8m8pz   1/1       Running       0          3h
+po/test-588dcc677c-g84sd              1/1       Running       1          23h
+po/test2-64d7488f47-rjkzk             1/1       Running       1          21h
+
+NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+svc/kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP     41d
+svc/test-svc     ClusterIP   10.98.211.160   <none>        30091/TCP   23h
+svc/test2-svc    ClusterIP   10.99.52.206    <none>        30092/TCP   21h
+
+
+[root@csv-dcosnew44 ~]# kubectl get ingress
+NAME                       HOSTS     ADDRESS   PORTS     AGE
+test-ingress                *                   80        20h
+
 ```
