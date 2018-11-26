@@ -1,12 +1,4 @@
-+++
-title = "Apiserver"
-date = "2018-11-21T19:46:06+08:00"
-draft = true
-tags = []
-topics = []
-description = ""
-+++
-
+[TOC]
 # Apiserver
 k8s apiserver 源码阅读笔记 
 <!--more--> 
