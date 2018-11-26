@@ -1,4 +1,3 @@
-[TOC]
 # Apiserver
 k8s apiserver 源码阅读笔记 
 <!--more--> 
@@ -295,7 +294,7 @@ apiserver对应的路径为`$GOPATH\k8s.io\kubernetes\cmd\kube-apiserver\apiserv
 apiserver的`app.Run()`，主要通过 `CreateServerChain()` 方法，创建出一个`*genericapiserver.GenericAPIServer`实例。    
 在`GenericAPIServer`中，包含的主要结构体有    
 - `*APIServerHandler`(*Handler holds the handlers being used by this API server*)
-- `DelegationTarget`(*delegationTarget is the next delegate in the chain or nil*)
+- `DelegationTarget`(*delegationTarget is the next delegate in the chain or nil*)    
 其中最重要的是`APIServerHandler`这个结构体，它包含了go-restful中的`*restful.Container`结构体，后面注册API时用到的`InstallAPIs()`方法，最终也是将路由注册到这个Container中，定义如下:
 ```golang
 // APIServerHandlers holds the different http.Handlers used by the API server.
