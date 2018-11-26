@@ -345,7 +345,7 @@ func CreateServerChain(runOptions *options.ServerRunOptions, stopCh <-chan struc
 - `CreateKubeAPIServer`(*creates and wires a workable kube-apiserver*), 通过以上几步生成的 apiserver 配置，通过`createAPIExtensionsServer`生成的`DelegationTarget`创建 apiserver 实例(*master.Master*)。这个过程中会 install kubernetes 的 core api 并 启动 BootStrapController(*a controller for watching the core capabilities of the master*),  install nodeTunneler 并添加`ca-registration`的 PostStartHook。    
 
 - `createAggregatorConfig`, 通过上面生成的 apiserver 配置生成 AggregatorConfig。(代码中只是浅拷贝一份`kubeAPIServerConfig.GenericConfig`并添加了 Proxy 相关的 ExtraConfig 到返回的`*aggregatorapiserver.Config`结构体中。)
-- 
+
 - `createAggregatorServer`, 生成 AggregatorServer(*Aggregator for Kubernetes-style API servers: dynamic registration, discovery summarization, secure proxy
 *)。这个过程中，会启动`apiserviceRegistrationController`, `availableController` 去监听 api service 资源，完成 api service 的发现和注册。    
 
