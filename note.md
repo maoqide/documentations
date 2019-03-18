@@ -1,5 +1,10 @@
 # record my common notes
 
+## dos2unix
+```shell
+find ./ -name "*.py" | xargs dos2unix
+```
+
 ## some useful docker commands
 ```shell
 #list images with format like 'repository:tag'
