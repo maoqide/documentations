@@ -1,5 +1,10 @@
 # record my common notes
 
+## find go file exclude vendor
+```shell
+find . -path ./vendor -prune -o  -name "*.go"  -print
+```
+
 ## dos2unix
 ```shell
 find ./ -name "*.py" | xargs dos2unix
